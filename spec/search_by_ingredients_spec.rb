@@ -9,7 +9,7 @@ feature 'can see foods' do
 
     click_on "Search"
 
-    expect(current_path).to eq(food_path)
+    expect(current_path).to eq(foods_path)
 
     expect(page).to have_content("10 results")
     expect(page).to have_css(".food", count: 10)
