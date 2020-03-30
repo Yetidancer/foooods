@@ -5,8 +5,21 @@ feature 'can see foods' do
   it 'user searches ingredient', :vcr do
     visit "/"
 
-    within ".search" do
-      fill_in "query", with: 'sweet potatoes'
-    end 
+    fill_in "q", with: 'sweet potatoes'
+
+    click_on "Search"
+
+    expect(current_path).to eq(food_path)
+
+    expect(page).to have_content("10 results")
+    expect(page).to have_css(".food", count: 10)
+
+    within(first(".food")) do
+      expect(page).to have_css(".code")
+      expect(page).to have_css(".description")
+      expect(page).to have_css(".owner")
+      expect(page).to have_css(".ingredients")
+
+    end
   end
 end
