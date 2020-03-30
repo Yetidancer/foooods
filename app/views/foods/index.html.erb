@@ -1,0 +1,17 @@
+<h1><%= @foods.count %> Results</h1>
+<% @foods.each do |food| %>
+<section class="food">
+    <section class="code">
+      <%= food[:fdcId] %>
+    </section>
+    <section class="description">
+      <%= food[:description] %>
+    </section>
+    <section class="owner">
+      <%= food[:brandOwner] %>
+    </section>
+    <section class="ingredients">
+      <%= food[:ingredients] %>
+    </section>
+  </section>
+<% end %>
